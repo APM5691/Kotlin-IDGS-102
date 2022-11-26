@@ -10,7 +10,7 @@ import com.example.projectoangel.models.Horario
 @Dao
 interface HorariosDao {
     @Query("SELECT * FROM horario")
-    fun getAll():List<Horario>
+    suspend fun getAll():List<Horario>
 
     @Query("SELECT * FROM horario WHERE ID = :id")
     suspend fun get(id:Int):List<Horario>

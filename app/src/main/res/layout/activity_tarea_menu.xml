@@ -24,7 +24,7 @@
         android:layout_marginTop="128dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="9dp"
-        app:layout_constraintBottom_toTopOf="@+id/button17"
+        app:layout_constraintBottom_toTopOf="@+id/crearTarea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/button15"
@@ -44,13 +44,12 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button17"
+        android:id="@+id/crearTarea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
-        android:layout_marginTop="9dp"
         android:layout_marginEnd="165dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="64dp"
         android:text="+"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"

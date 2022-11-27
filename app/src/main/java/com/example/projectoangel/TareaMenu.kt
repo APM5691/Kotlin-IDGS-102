@@ -1,5 +1,6 @@
 package com.example.projectoangel
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +34,11 @@ class TareaMenu : AppCompatActivity() {
         setContentView(binding.root)
 
         initRecyclerView()
+
+        binding.crearTarea.setOnClickListener{
+            val intent = Intent(this,TareaCrear::class.java)
+            startActivity(intent)
+        }
     }
 
     fun initRecyclerView(){

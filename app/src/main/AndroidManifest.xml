@@ -15,16 +15,8 @@
         android:theme="@style/Theme.ProjectoAngel">
 
         <activity
-            android:name=".MainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
-        <activity
-            android:name=".menu_api"
-            android:exported="false">
+            android:name=".MenuApi"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -32,14 +24,14 @@
 
         <activity
             android:name=".Menu"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
 
         <activity
-            android:name=".TareaMenu"
+            android:name=".Main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,9 +44,27 @@
         </activity>
 
         <activity
-            android:name=".TareaCrear"
+            android:name=".tarea.TareaCrear"
             android:exported="true"
-            android:parentActivityName=".TareaMenu">
+            android:parentActivityName=".tarea.TareaMenu">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".tarea.TareaEditar"
+            android:exported="true"
+            android:parentActivityName=".tarea.TareaMenu">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".tarea.TareaMenu"
+            android:exported="true"
+            android:parentActivityName=".tarea.TareaMenu">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

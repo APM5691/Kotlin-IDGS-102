@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Main">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/view"
@@ -16,15 +16,16 @@
 
     <EditText
         android:id="@+id/usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="46dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="37dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:text="al221910938@gmail.com"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.45" />
@@ -49,6 +50,7 @@
         android:layout_marginBottom="201dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:text="123456789"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

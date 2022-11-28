@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CerrarSesion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menu_api">
+    tools:context=".MenuApi">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/CerrarSesion2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
@@ -15,7 +16,7 @@
         android:layout_marginEnd="237dp"
         android:layout_marginBottom="16dp"
         android:text="Cerrar Sesion"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/ApiLocal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,47 +34,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/CerrarSesion2"
         app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Usuario" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btnHorario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Horario" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btnSemana"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dia de la Semana" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/btnActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Actividad" />
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/btnClases"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Clases" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/btnTarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tarea" />
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/btnPorcentaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Porcentaje" />

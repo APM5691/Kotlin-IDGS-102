@@ -56,12 +56,6 @@
             android:text="Dia de la Semana" />
 
         <Button
-            android:id="@+id/btnActividad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Actividad" />
-
-        <Button
             android:id="@+id/btnClases"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

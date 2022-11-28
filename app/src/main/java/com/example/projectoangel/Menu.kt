@@ -16,5 +16,15 @@ class Menu : AppCompatActivity() {
             val intent = Intent(this,MenuApi::class.java)
             startActivity(intent)
         }
+
+        binding.Perfil.setOnClickListener{
+            val intent = Intent(this,Perfil::class.java)
+            startActivity(intent)
+        }
+
+        binding.InfoApp.setOnClickListener{
+            val intent = Intent(this,Info::class.java)
+            startActivity(intent)
+        }
     }
 }

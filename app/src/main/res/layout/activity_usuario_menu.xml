@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tarea.TareaMenu">
+    tools:context=".usuario.UsuarioMenu">
 
     <Button
         android:id="@+id/button15"
@@ -18,11 +18,11 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="408dp"
-        android:layout_height="547dp"
+        android:layout_width="388dp"
+        android:layout_height="546dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="9dp"
         app:layout_constraintBottom_toTopOf="@+id/crearUsuario"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,12 +36,27 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ListaTarea"
+                android:id="@+id/ListaUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="582dp" />
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/crearUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginEnd="165dp"
+        android:layout_marginBottom="64dp"
+        android:text="+"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <TextView
         android:id="@+id/textView3"
@@ -55,14 +70,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button15"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/crearTarea"
-        android:layout_width="113dp"
-        android:layout_height="65dp"
-        android:text="+"
-        android:textSize="34sp"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="663dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

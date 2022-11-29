@@ -34,10 +34,6 @@ class TareaMenu : AppCompatActivity() {
 
         var Tareas = emptyList<Tarea>()
 
-        var insertTareas = listOf<Tarea>(
-            Tarea(0,"Tarea 1","Tarea 1","22/05/2001","22/05/2001"),
-            Tarea(0,"Tarea 2","Tarea 2","22/05/2001","22/05/2001"),
-        )
 
             var database = AppDatabase.getDatabase(this)
 

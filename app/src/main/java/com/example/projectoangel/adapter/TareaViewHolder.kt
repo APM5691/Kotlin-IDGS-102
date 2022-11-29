@@ -2,8 +2,6 @@ package com.example.projectoangel.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.provider.AlarmClock.EXTRA_MESSAGE
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -11,17 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projectoangel.R
 import com.example.projectoangel.tarea.TareaMenu
 import com.example.projectoangel.config.AppDatabase
-import com.example.projectoangel.databinding.ActivityTareaEditarBinding
 import com.example.projectoangel.models.Tarea
 import com.example.projectoangel.tarea.TareaEditar
 
 class TareaViewHolder(view: View) :RecyclerView.ViewHolder(view){
 
-    val tareatexto = view.findViewById<TextView>(R.id.textTarea)
-    val btnEditar = view.findViewById<Button>(R.id.btnEditarTarea)
-    val btnBorrar = view.findViewById<Button>(R.id.btnBorrarTarea)
+    val tareatexto = view.findViewById<TextView>(R.id.textUsuario)
+    val btnEditar = view.findViewById<Button>(R.id.btnEditarUsuario)
+    val btnBorrar = view.findViewById<Button>(R.id.btnBorrarUsuario)
 
-    fun render(tarea:Tarea){
+    fun render(tarea: Tarea){
         tareatexto.text = tarea.Nombre
     }
 

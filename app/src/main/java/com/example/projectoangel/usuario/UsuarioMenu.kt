@@ -48,7 +48,6 @@ class UsuarioMenu : AppCompatActivity() {
 
         var database = AppDatabase.getDatabase(this)
 
-
          Usuarios = database.usuarios().getAll()
 
          Log.d("message", Usuarios.toString())

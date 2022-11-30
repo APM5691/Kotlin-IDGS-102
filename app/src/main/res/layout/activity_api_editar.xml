@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".menuApi.ApiEditar">
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCerrarSesion"
         android:layout_width="227dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"

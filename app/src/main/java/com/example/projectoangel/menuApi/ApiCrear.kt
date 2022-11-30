@@ -1,6 +1,7 @@
 package com.example.projectoangel.menuApi
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.projectoangel.Main
 import com.example.projectoangel.databinding.ActivityApiCrearBinding
 import com.example.projectoangel.models.Actividad
 import java.nio.charset.Charset
@@ -19,6 +21,17 @@ class ApiCrear : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityApiCrearBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var sharedpreferences: SharedPreferences = getSharedPreferences("MyPref", 0)
+
+        val editor: SharedPreferences.Editor = sharedpreferences.edit()
+        //var id = sharedpreferences.getString("id", "")
+
+        binding.button2.setOnClickListener{
+            editor.clear().apply();
+            val intent = Intent(this, Main::class.java)
+            startActivity(intent)
+        }
 
         binding.btnApiCreated.setOnClickListener{
             val queue = Volley.newRequestQueue(this)

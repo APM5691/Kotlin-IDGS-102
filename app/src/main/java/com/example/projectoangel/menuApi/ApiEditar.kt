@@ -1,12 +1,14 @@
 package com.example.projectoangel.menuApi
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.projectoangel.Main
 import com.example.projectoangel.databinding.ActivityApiEditarBinding
 import com.example.projectoangel.models.Actividad
 import com.example.projectoangel.models.Tarea
@@ -19,6 +21,17 @@ class ApiEditar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityApiEditarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var sharedpreferences: SharedPreferences = getSharedPreferences("MyPref", 0)
+
+        val editor: SharedPreferences.Editor = sharedpreferences.edit()
+        //var id = sharedpreferences.getString("id", "")
+
+        binding.btnCerrarSesion.setOnClickListener{
+            editor.clear().apply();
+            val intent = Intent(this, Main::class.java)
+            startActivity(intent)
+        }
 
         val Act = intent.getSerializableExtra("key") as Actividad
 
@@ -48,7 +61,7 @@ class ApiEditar : AppCompatActivity() {
                         params["descripcion"] =  binding.txtApiCrearDesc.text.toString()
                         params["fecha_de_inicio"] = binding.txtApiCrearFecIni.text.toString()
                         params["fecha_de_termino"] = binding.txtApiCrearFecFin.text.toString()
-                        Log.d("message", params.toString())
+                        //Log.d("message", params.toString())
                         return params
                     }
 

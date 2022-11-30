@@ -6,13 +6,16 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
+import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectoangel.R
 import com.example.projectoangel.config.AppDatabase
 import com.example.projectoangel.menuApi.ApiEditar
+import com.example.projectoangel.menuApi.ApiMenu
 import com.example.projectoangel.models.Actividad
 import com.google.gson.Gson
 import org.json.JSONObject
@@ -66,14 +69,21 @@ class ActividadViewHolder(view: View) :RecyclerView.ViewHolder(view){
         }
     }
 
-    fun delet(actividad: Actividad,cn: Context){
+    fun delet(id:Int,cn: Context){
         btnBorrar.setOnClickListener{
-            var database = AppDatabase.getDatabase(cn)
-
-            //database.tareas().delete(tarea)
-
-            //val intent = Intent(cn, ActividadMenu::class.java)
-            //cn.startActivity(intent)
+            val queue = Volley.newRequestQueue(cn)
+            val sr: StringRequest = object : StringRequest(
+                Method.DELETE, "http://192.168.1.75:8000/api/actividades/"+id+"/",
+                Response.Listener { response ->
+                    Log.d("message", response)
+                },
+                Response.ErrorListener { error ->
+                    Log.d("message", "error $error")
+                }) {
+            }
+            queue.add(sr)
+            val intent = Intent(cn, ApiMenu::class.java)
+            startActivity(cn,intent,null)
         }
     }
 

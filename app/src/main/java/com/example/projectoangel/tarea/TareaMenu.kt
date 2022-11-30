@@ -1,10 +1,12 @@
 package com.example.projectoangel.tarea
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projectoangel.Main
 import com.example.projectoangel.adapter.TareaAdapter
 import com.example.projectoangel.config.AppDatabase
 import com.example.projectoangel.databinding.ActivityTareaMenuBinding
@@ -19,6 +21,17 @@ class TareaMenu : AppCompatActivity() {
         setContentView(binding.root)
 
         initRecyclerView()
+
+        var sharedpreferences: SharedPreferences = getSharedPreferences("MyPref", 0)
+
+        val editor: SharedPreferences.Editor = sharedpreferences.edit()
+        //var id = sharedpreferences.getString("id", "")
+
+        binding.button15.setOnClickListener{
+            editor.clear().apply();
+            val intent = Intent(this, Main::class.java)
+            startActivity(intent)
+        }
 
         binding.crearTarea.setOnClickListener{
             val intent = Intent(this, TareaCrear::class.java)

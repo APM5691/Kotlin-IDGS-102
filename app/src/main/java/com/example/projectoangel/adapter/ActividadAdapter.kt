@@ -20,7 +20,7 @@ class ActividadAdapter(private val listaActividad:List<Actividad>,cn: Context) :
         val item = listaActividad[position]
         holder.render(item)
         holder.edit(item.id,cpn)
-        holder.delet(item,cpn)
+        holder.delet(item.id,cpn)
     }
 
     override fun getItemCount(): Int = listaActividad.size

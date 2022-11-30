@@ -1,10 +1,12 @@
 package com.example.projectoangel.usuario
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.projectoangel.Main
 import com.example.projectoangel.config.AppDatabase
 import com.example.projectoangel.databinding.ActivityUsuarioEditarBinding
 import com.example.projectoangel.models.Usuario
@@ -21,6 +23,17 @@ class UsuarioEditar: AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         binding=ActivityUsuarioEditarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var sharedpreferences: SharedPreferences = getSharedPreferences("MyPref", 0)
+
+        val editor: SharedPreferences.Editor = sharedpreferences.edit()
+        //var id = sharedpreferences.getString("id", "")
+
+        binding.button19.setOnClickListener{
+            editor.clear().apply();
+            val intent = Intent(this, Main::class.java)
+            startActivity(intent)
+        }
 
         val usuario = intent.getSerializableExtra("key") as Usuario
 

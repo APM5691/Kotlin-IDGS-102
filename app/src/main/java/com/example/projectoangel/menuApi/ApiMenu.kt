@@ -1,6 +1,7 @@
 package com.example.projectoangel.menuApi
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.projectoangel.Main
 import com.example.projectoangel.adapter.ActividadAdapter
 import com.example.projectoangel.databinding.ActivityApiMenuBinding
 import com.example.projectoangel.models.Actividad
@@ -22,6 +24,17 @@ class ApiMenu : AppCompatActivity() {
         setContentView(binding.root)
 
         getData()
+
+        var sharedpreferences: SharedPreferences = getSharedPreferences("MyPref", 0)
+
+        val editor: SharedPreferences.Editor = sharedpreferences.edit()
+        //var id = sharedpreferences.getString("id", "")
+
+        binding.ApiCerrarSesion.setOnClickListener{
+            editor.clear().apply();
+            val intent = Intent(this, Main::class.java)
+            startActivity(intent)
+        }
 
         binding.btnApiCrear.setOnClickListener {
             val intent = Intent(this, ApiCrear::class.java)

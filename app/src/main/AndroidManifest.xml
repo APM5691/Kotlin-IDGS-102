@@ -75,7 +75,8 @@
         </activity>
         <activity
             android:name=".Menu"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".Main">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

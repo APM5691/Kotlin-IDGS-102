@@ -1,8 +1,10 @@
 package com.example.projectoangel.usuario
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.projectoangel.Main
 import com.example.projectoangel.config.AppDatabase
 import com.example.projectoangel.databinding.ActivityUsuarioCrearBinding
 import com.example.projectoangel.models.Usuario
@@ -18,6 +20,17 @@ class UsuarioCrear : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUsuarioCrearBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var sharedpreferences: SharedPreferences = getSharedPreferences("MyPref", 0)
+
+        val editor: SharedPreferences.Editor = sharedpreferences.edit()
+        //var id = sharedpreferences.getString("id", "")
+
+        binding.button19.setOnClickListener{
+            editor.clear().apply();
+            val intent = Intent(this, Main::class.java)
+            startActivity(intent)
+        }
 
         binding.Crear.setOnClickListener{
             var tar : Usuario = getAllData()

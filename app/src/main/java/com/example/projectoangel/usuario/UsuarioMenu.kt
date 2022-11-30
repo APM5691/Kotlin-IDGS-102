@@ -25,7 +25,6 @@ class UsuarioMenu : AppCompatActivity() {
             startActivity(intent)
         }
 
-
     }
 
     fun initRecyclerView(){

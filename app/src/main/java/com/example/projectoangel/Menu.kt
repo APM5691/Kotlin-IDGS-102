@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.projectoangel.databinding.ActivityMenuBinding
+import com.example.projectoangel.menuApi.ApiMenu
 
 class Menu : AppCompatActivity() {
     lateinit var binding: ActivityMenuBinding
@@ -24,6 +25,11 @@ class Menu : AppCompatActivity() {
 
         binding.InfoApp.setOnClickListener{
             val intent = Intent(this,Info::class.java)
+            startActivity(intent)
+        }
+
+        binding.ApiInternet.setOnClickListener{
+            val intent = Intent(this, ApiMenu::class.java)
             startActivity(intent)
         }
     }

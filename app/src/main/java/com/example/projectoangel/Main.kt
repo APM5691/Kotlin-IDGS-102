@@ -22,7 +22,7 @@ class Main : AppCompatActivity() {
 
         binding.button.setOnClickListener{
 
-            Log.d("message",usuario + password)
+
             if (usuario.equals("al221910938@gmail.com") && password.equals("123456789"))
             {
                 Toast.makeText(this,"Inicio Exitoso",Toast.LENGTH_LONG).show()

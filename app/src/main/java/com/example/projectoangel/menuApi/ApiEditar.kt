@@ -47,7 +47,7 @@ class ApiEditar : AppCompatActivity() {
 
                 val queue = Volley.newRequestQueue(this)
                 val sr: StringRequest = object : StringRequest(
-                    Method.PUT, "http://192.168.1.75:8000/api/actividades/",
+                    Method.PUT, "https://proyectodecimo-sn96l.ondigitalocean.app/api/actividades",
                     Response.Listener { response ->
                         Log.d("message", response)
                     },

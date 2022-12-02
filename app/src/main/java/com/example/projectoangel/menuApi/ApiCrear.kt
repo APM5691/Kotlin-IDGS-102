@@ -35,7 +35,7 @@ class ApiCrear : AppCompatActivity() {
 
         binding.btnApiCreated.setOnClickListener{
             val queue = Volley.newRequestQueue(this)
-            val sr: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.75:8000/api/actividades/",
+            val sr: StringRequest = object : StringRequest(Method.POST, "https://proyectodecimo-sn96l.ondigitalocean.app/api/actividades",
                 Response.Listener { response ->
                     Log.d("message", response)
                 },

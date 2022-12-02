@@ -46,7 +46,7 @@ class ApiMenu : AppCompatActivity() {
     fun getData() {
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(this)
-        val url = "http://192.168.1.75:8000/api/actividades/"
+        val url = "https://proyectodecimo-sn96l.ondigitalocean.app/api/actividades"
 
         var listaActividad = listOf<Actividad>()
         val stringRequest = StringRequest(

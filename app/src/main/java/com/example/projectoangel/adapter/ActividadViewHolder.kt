@@ -42,7 +42,7 @@ class ActividadViewHolder(view: View) :RecyclerView.ViewHolder(view){
 
                 // Instantiate the RequestQueue.
                 val queue = Volley.newRequestQueue(cn)
-                val url = "http://192.168.1.75:8000/api/actividades/"+actividad+"/"
+                val url = "https://proyectodecimo-sn96l.ondigitalocean.app/api/actividades/"+actividad
 
                 var Act : Actividad
                 val stringRequest = StringRequest(
@@ -73,7 +73,7 @@ class ActividadViewHolder(view: View) :RecyclerView.ViewHolder(view){
         btnBorrar.setOnClickListener{
             val queue = Volley.newRequestQueue(cn)
             val sr: StringRequest = object : StringRequest(
-                Method.DELETE, "http://192.168.1.75:8000/api/actividades/"+id+"/",
+                Method.DELETE, "https://proyectodecimo-sn96l.ondigitalocean.app/api/actividades/"+id,
                 Response.Listener { response ->
                     Log.d("message", response)
                 },

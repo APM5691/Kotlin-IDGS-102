@@ -1,69 +1,133 @@
 package com.example.projectoangel
 
-import android.content.Intent
-import android.content.SharedPreferences
+import android.Manifest
+import android.content.ContentUris
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
+import android.widget.GridView
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.projectoangel.config.AppDatabase
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.projectoangel.adapter.ImageAdapter
 import com.example.projectoangel.databinding.ActivityMainBinding
-import com.example.projectoangel.models.Usuario
 
 
 class Main : AppCompatActivity() {
 
     lateinit var binding:ActivityMainBinding
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var imageAdapter: ImageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var sharedpreferences: SharedPreferences = getSharedPreferences("MyPref", 0)
+        recyclerView = findViewById(R.id.recyclerView)
 
-        val editor: SharedPreferences.Editor = sharedpreferences.edit()
+        val layoutManager = GridLayoutManager(this, 2)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = layoutManager
 
-        editor.clear().apply();
-
-        binding.button.setOnClickListener{
-
-            var database = AppDatabase.getDatabase(this)
-
-            var Usuarios = database.usuarios().getAll()
-
-            Log.d("mesage", Usuarios.toString())
-
-            if (Usuarios.isEmpty()) {
-                Toast.makeText(this, "No hay usuarios", Toast.LENGTH_SHORT).show()
-
-                database.usuarios().insert(Usuario(0,"Angel","Palacios","Mirafuentes","22/05/2022","al221910938@gmail.com","123456789"))
-
-                val intent = Intent(this, Main::class.java)
-
-                startActivity(intent)
-
-            }else {
-
-                var usuario = binding.usuario.text.toString()
-
-                var password = binding.password.text.toString()
-
-                for (i in Usuarios) {
-                    if (i.Correo == usuario && i.Password == password) {
-                        editor.putString("id", i.ID.toString()).commit()
-                        val intent = Intent(this, Menu::class.java)
-                        startActivity(intent)
-                        Toast.makeText(this, "Sesion Iniciada", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-            }
-
-        }
+        imageAdapter = ImageAdapter(this, emptyArray())
 
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        pedirPermisos()
+
+        val listImages = loadImages()
+
+        imageAdapter = ImageAdapter(this, listImages.toTypedArray())
+
+        recyclerView.adapter = imageAdapter
+    }
+
+    private fun pedirPermisos() {
+        // Pedir permisos
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // No hay permiso
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                1
+            )
+        } else {
+            // Si hay permiso
+            Toast.makeText(this, "Ya hay permiso", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun loadImages(): MutableList<Uri> {
+        val projection = arrayOf(
+            MediaStore.Images.Media._ID,
+            MediaStore.Images.Media.DISPLAY_NAME,
+            MediaStore.Images.Media.DATA
+        )
+
+        val arrayOfImagesAndVideosExternal = contentResolver.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            projection,
+            null,
+            null,
+            null
+        )
+
+        val arrayOfImagesAndVideosInternal = contentResolver.query(
+            MediaStore.Images.Media.INTERNAL_CONTENT_URI,
+            projection,
+            null,
+            null,
+            null
+        )
+
+        val imagesList = mutableListOf<Uri>()
+
+        if (arrayOfImagesAndVideosExternal != null) {
+            while (arrayOfImagesAndVideosExternal.moveToNext()) {
+                val id = arrayOfImagesAndVideosExternal.getLong(0)
+                val name = arrayOfImagesAndVideosExternal.getString(1)
+                val data = arrayOfImagesAndVideosExternal.getString(2)
+                val contentUri = ContentUris.withAppendedId(
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    id
+                )
+
+
+                imagesList.add(contentUri)
+            }
+        }
+
+        if (arrayOfImagesAndVideosInternal != null) {
+            while (arrayOfImagesAndVideosInternal.moveToNext()) {
+                val id = arrayOfImagesAndVideosInternal.getLong(0)
+                val name = arrayOfImagesAndVideosInternal.getString(1)
+                val data = arrayOfImagesAndVideosInternal.getString(2)
+                val contentUri = ContentUris.withAppendedId(
+                    MediaStore.Images.Media.INTERNAL_CONTENT_URI,
+                    id
+                )
+
+                imagesList.add(contentUri)
+            }
+        }
+
+        return imagesList
+    }
 }
